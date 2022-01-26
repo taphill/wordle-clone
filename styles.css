@@ -35,6 +35,7 @@ h1 {
 
 #board {
   display: grid;
+  place-content: center;
   grid-template-columns: repeat(5, var(--square-size));
   gap: 0.5rem;
 }
