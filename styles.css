@@ -12,11 +12,17 @@
   --size-900: calc(var(--base-size) * 3.052);
 
   --square-size: 6rem;
+
+  --color-text: #d7dadc;
+  --color-bg: #121213;
+  --color-green: #538d4e;
+  --color-yellow: #b59f3b;
+  --color-grey: #3a3a3c;
 }
 
 body {
-  color: white;
-  background-color: black;
+  color: var(--color-text);
+  background-color: var(--color-bg);
   font-family: sans-serif;
 }
 
@@ -43,10 +49,23 @@ h1 {
 .square {
   height: var(--square-size);
   line-height: var(--square-size);
-  border: 2px solid grey;
+  font-size: calc(var(--size-700) * 2);
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  border: 2px solid var(--color-grey);
 }
 
-.square > * {
-  font-size: calc(var(--size-700) * 2);
-  text-align: center;
+.bg-correct-letter-postion {
+  background-color: var(--color-green);
+  border-color: var(--color-green);
+}
+
+.bg-correct-letter {
+  background-color: var(--color-yellow);
+  border-color: var(--color-yellow);
+}
+
+.bg-incorrect-letter {
+  background-color: var(--color-grey);
 }

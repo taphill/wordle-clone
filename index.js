@@ -7,9 +7,7 @@ const board = document.getElementById('board')
 function populateBoard () {
   for (let i = 0; i < squareCount; i++) {
     board.innerHTML += `
-      <div id="${i + 1}" class="square">
-        <p></p>
-      </div>
+      <div class="square"></div>
     `
   }
 }
@@ -29,13 +27,14 @@ function generateRows () {
 // Variables
 
 let wordList = [
-  'patio',
-  'darts',
+  'hello',
+  'world',
   'piano',
   'horse'
 ]
 let randomIndex = Math.floor(Math.random() * wordList.length)
-let secretWord =  wordList[randomIndex]
+// let secretWord =  wordList[randomIndex]
+let secretWord =  'hello'
 let currentAttempt = ''
 let attempts = []
 let rows = null
@@ -69,19 +68,49 @@ function updateCurrentAttempt (event) {
 
 
 
-// Helper functions
+// Main functions
 
 function updateBoard () {
   drawCurrentAttempt(rows[0], currentAttempt)
 }
 
 function drawCurrentAttempt (row, attempt) {
-  upcaseAttempt = attempt.toUpperCase()
-
   row.forEach((square, index) => {
-    let letter = upcaseAttempt[index] ?? ''
-    square.firstElementChild.textContent = `${letter}`
+    let letter = attempt[index] ?? ''
+    square.textContent = `${letter}`
+    updateBgColor(square, index)
   })
+}
+
+
+
+// Helper functions
+
+function updateBgColor (square, index) {
+  let currentLetter = square.textContent
+  let correctLetter = secretWord[index]
+
+  if (correctLetterAndPosition(currentLetter, correctLetter)) {
+    square.classList.add('bg-correct-letter-postion')
+  } else if (correctLetterWrongPosition(currentLetter, correctLetter)) {
+    square.classList.add('bg-correct-letter')
+  } else if (incorrectLetter(currentLetter, correctLetter)) {
+    square.classList.add('bg-incorrect-letter')
+  } else {
+    square.classList.remove('bg-correct-letter-postion', 'bg-correct-letter', 'bg-incorrect-letter')
+  }
+}
+
+function correctLetterAndPosition (currentLetter, correctLetter) {
+  return currentLetter === correctLetter
+}
+
+function correctLetterWrongPosition (currentLetter, correctLetter) {
+  return currentLetter !== '' && secretWord.includes(currentLetter)
+}
+
+function incorrectLetter (currentLetter, correctLetter) {
+  return currentLetter !== '' && !secretWord.includes(currentLetter)
 }
 
 
