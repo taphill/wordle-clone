@@ -11,7 +11,7 @@
   --size-800: calc(var(--base-size) * 2.441);
   --size-900: calc(var(--base-size) * 3.052);
 
-  --square-size: 6rem;
+  --square-size: 4rem;
 
   --color-text: #d7dadc;
   --color-bg: #121213;
@@ -27,16 +27,19 @@ body {
 }
 
 h1 {
-  font-size: var(--size-900);
+  font-size: var(--size-800);
+  line-height: var(--size-800);
   text-align: center;
+  margin-bottom: var(--size-600);
+  border-bottom: 2px solid var(--color-grey);
+  padding-top: var(--size-100);
+  padding-bottom: var(--size-100);
 }
 
 .max-width-wrapper {
-  max-width: 40rem;
+  max-width: 32rem;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 32px;
-  padding-right: 32px;
 }
 
 #board {
@@ -49,7 +52,7 @@ h1 {
 .square {
   height: var(--square-size);
   line-height: var(--square-size);
-  font-size: calc(var(--size-700) * 2);
+  font-size: var(--size-800);
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
