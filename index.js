@@ -39,8 +39,7 @@ let wordList = [
   'horse'
 ]
 let randomIndex = Math.floor(Math.random() * wordList.length)
-// let secretWord =  wordList[randomIndex]
-let secretWord =  'hello'
+let secretWord =  wordList[randomIndex]
 let currentAttempt = ''
 let attempts = []
 
